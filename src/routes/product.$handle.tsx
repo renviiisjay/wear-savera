@@ -46,7 +46,10 @@ function ProductPage() {
   const [desc, ...rest] = p.description.split(/(?=Fabric:)/);
 
   const add = async () => {
-    if (sizeOpt && !size) return toast("Please select a size");
+    if (sizeOpt && !size) {
+      toast("Please select a size");
+      return;
+    }
     if (!variant) return;
     setBusy(true);
     const ok = await addItem({ product: data, variantId: variant.id, variantTitle: variant.title, price: variant.price, quantity: qty, selectedOptions: variant.selectedOptions });

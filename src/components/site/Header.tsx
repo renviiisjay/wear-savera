@@ -29,7 +29,7 @@ export function Header() {
   const submit = (e: React.FormEvent) => {
     e.preventDefault();
     setSearch(false);
-    navigate({ to: "/shop", search: { q: q || undefined } });
+    navigate({ to: "/shop", search: q ? { q } : {} });
   };
 
   const badge = (n: number) =>
@@ -53,7 +53,7 @@ export function Header() {
               <Link
                 key={n.label}
                 to={n.to}
-                search={"search" in n ? n.search : undefined}
+                {...("search" in n ? { search: n.search } : {})}
                 className="text-[11px] uppercase tracking-[0.2em] text-muted-foreground transition-colors hover:text-foreground"
                 activeOptions={{ exact: true, includeSearch: true }}
                 activeProps={{ className: "text-foreground" }}
@@ -88,7 +88,7 @@ export function Header() {
           </div>
           <nav className="mt-12 flex flex-col gap-6">
             {NAV.map((n) => (
-              <Link key={n.label} to={n.to} search={"search" in n ? n.search : undefined} onClick={() => setMenu(false)} className="font-serif text-3xl">
+              <Link key={n.label} to={n.to} {...("search" in n ? { search: n.search } : {})} onClick={() => setMenu(false)} className="font-serif text-3xl">
                 {n.label}
               </Link>
             ))}

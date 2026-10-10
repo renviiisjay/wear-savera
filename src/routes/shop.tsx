@@ -5,18 +5,18 @@ import { CATEGORIES, COLLECTIONS, productsQuery, getColor, isNew } from "@/lib/s
 import { ProductCard, ProductGridSkeleton } from "@/components/site/ProductCard";
 
 type Search = {
-  q?: string;
-  category?: string;
-  collection?: string;
-  size?: string;
-  color?: string;
-  max?: number;
-  instock?: boolean;
-  sort?: "featured" | "newest" | "price-asc" | "price-desc";
+  q?: string | undefined;
+  category?: string | undefined;
+  collection?: string | undefined;
+  size?: string | undefined;
+  color?: string | undefined;
+  max?: number | undefined;
+  instock?: boolean | undefined;
+  sort?: "featured" | "newest" | "price-asc" | "price-desc" | undefined;
 };
 
 export const Route = createFileRoute("/shop")({
-  validateSearch: (s: Record<string, unknown>): Search => ({
+  validateSearch: (s: { [k: string]: unknown; q?: unknown; category?: unknown; collection?: unknown; size?: unknown; color?: unknown; max?: unknown; instock?: unknown; sort?: unknown }): Search => ({
     q: typeof s.q === "string" ? s.q : undefined,
     category: typeof s.category === "string" ? s.category : undefined,
     collection: typeof s.collection === "string" ? s.collection : undefined,
