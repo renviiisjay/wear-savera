@@ -197,7 +197,7 @@ export function Creators() {
 
         {/* Mobile */}
         <div className="mt-10 md:hidden">
-          <img src={IMG.creators} alt="Original illustration of three fashionable cartoon girls — the SAVÉRA creators" loading="lazy" className="w-full scale-[1.6]" />
+          <div className="overflow-hidden"><img src={IMG.creators} alt="Original illustration of three fashionable cartoon girls — the SAVÉRA creators" loading="lazy" className="-ml-[30%] w-[160%] max-w-none" /></div>
           <div className="mt-12 grid grid-cols-3 gap-2 text-center">
             {CREATORS.map((c) => (
               <div key={c.name} className="reveal">
